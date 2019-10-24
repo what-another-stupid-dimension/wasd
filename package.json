@@ -1,0 +1,80 @@
+{
+  "name": "wasd",
+  "version": "0.0.1",
+  "description": "Open Source Typescript Game and Physics Engine",
+  "homepage": "https://github.com/what-another-stupid-dimension/wasd#readme",
+  "author": "Alexander Mührenberg <alexander@muehrenberg.de>",
+  "license": "GPL-3.0-or-later",
+  "keywords": [
+    "game-engine",
+    "typescript",
+    "physics"
+  ],
+  "bugs": {
+    "url": "https://github.com/what-another-stupid-dimension/wasd/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/what-another-stupid-dimension/wasd.git"
+  },
+  "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "build": "lerna run build --stream",
+    "build:watch": "lerna run build:watch",
+    "clean": "yarn run clean:modules && yarn run clean:dist",
+    "clean:dist": "del-cli core/*/lib",
+    "clean:modules": "lerna clean --yes",
+    "lint": "yarn run lint:file .",
+    "lint:fix": "yarn run lint:file:fix .",
+    "lint:file": "eslint --ignore-path .gitignore --config eslint.config.js --ext .ts --ext .js --ext .md --ext .json",
+    "lint:file:fix": "yarn run lint:file --fix",
+    "publish": "yarn run clean && lerna bootstrap && yarn run build && lerna publish",
+    "test": "jest .",
+    "test:watch": "yarn run test --watch"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^8.2.0",
+    "@commitlint/config-conventional": "^8.2.0",
+    "@types/jest": "^24.0.19",
+    "@types/node": "^12.11.1",
+    "@typescript-eslint/eslint-plugin": "^2.5.0",
+    "@typescript-eslint/parser": "^2.5.0",
+    "del-cli": "^3.0.0",
+    "eslint": "^6.5.1",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-prettier": "^6.4.0",
+    "eslint-plugin-eslint-comments": "^3.1.2",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jest": "^22.20.0",
+    "eslint-plugin-json": "^2.0.1",
+    "eslint-plugin-markdown": "^1.0.1",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-promise": "^4.2.1",
+    "husky": "^3.0.9",
+    "jest": "^24.9.0",
+    "lerna": "^3.18.1",
+    "lint-staged": "^9.4.2",
+    "prettier": "^1.18.2",
+    "rimraf": "^3.0.0",
+    "ts-jest": "^24.1.0",
+    "typescript": "^3.6.4"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts,json,css,md}": [
+      "yarn run lint:file:fix",
+      "git add"
+    ]
+  }
+}

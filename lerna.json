@@ -1,0 +1,24 @@
+{
+  "version": "0.0.0",
+  "npmClient": "yarn",
+  "packages": ["algorithm/*", "command/*", "core/*"],
+  "command": {
+    "create": {
+      "homepage": "https://github.com/what-another-stupid-dimension/wasd",
+      "license": "GPL-3.0-or-later"
+    },
+    "version": {
+      "allowBranch": "master",
+      "conventionalCommits": true,
+      "exact": true,
+      "message": "chore(release): %s"
+    }
+  },
+  "ignoreChanges": [
+    "**/__fixtures__/**",
+    "**/__tests__/**",
+    "**/*.md",
+    "**/tsconfig.json",
+    "**/jest.config.js"
+  ]
+}

@@ -103,16 +103,16 @@ test('geometry > vector > distanceTo', () => {
   expect(vector.distanceTo(new Vector(20, 20))).toBe(14.142135623730951)
 })
 
-test('geometry > vector > axisProjection', () => {
+test('geometry > vector > projectionAxis', () => {
   const vector = new Vector(10, 10)
-  const projection = vector.axisProjection(new Vector(20, 20))
+  const projection = vector.projectionAxis(new Vector(20, 20))
   expect(projection.x).toBe(10)
   expect(projection.y).toBe(10)
 })
 
-test('geometry > vector > axisProjection with zero case', () => {
+test('geometry > vector > projectionAxis with zero case', () => {
   const vector = new Vector(0, 0)
-  const projection = vector.axisProjection(new Vector(0, 0))
+  const projection = vector.projectionAxis(new Vector(0, 0))
   expect(projection.x).toBe(0)
   expect(projection.y).toBe(0)
 })

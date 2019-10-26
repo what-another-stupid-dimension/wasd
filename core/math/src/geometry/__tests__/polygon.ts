@@ -31,3 +31,15 @@ test('geometry > polygon > isPolygon', () => {
   const polygon = new Polygon(verticesFixture)
   expect(Polygon.isPolygon(polygon)).toBeTruthy()
 })
+
+test('geometry > polygon > add', () => {
+  const polygon = new Polygon(verticesFixture)
+  polygon.add(new Vector(10, 10))
+  expect(polygon.points).toStrictEqual([
+    new Vector(0, 0),
+    new Vector(-10, -10),
+    new Vector(30, -10),
+    new Vector(30, 0),
+    new Vector(10, 10)
+  ])
+})

@@ -1,6 +1,6 @@
 import { Polygon, Vector, ProjectionAxisRange } from '../geometry'
 
-export const areProjectionAxisRangeOverlapping = (
+export const areProjectionAxisRangesOverlapping = (
   range1: ProjectionAxisRange,
   range2: ProjectionAxisRange
 ): boolean => {
@@ -13,15 +13,14 @@ export const isShadowAxisOverlapping = (
 ): boolean => {
   for (let i = 0; i < sourcePolygon.points.length; i += 1) {
     // Create axis projection for the lint between current and next point
-    const axisProjection = sourcePolygon.points[i].axisProjection(
+    const projectionAxis = sourcePolygon.points[i].projectionAxis(
       sourcePolygon.points[(i + 1) % sourcePolygon.points.length]
     )
-
     // Now lets check if the polygons ranges on the projection axis are overlapping
     if (
-      !areProjectionAxisRangeOverlapping(
-        sourcePolygon.getProjectionAxisRange(axisProjection),
-        comparePolygon.getProjectionAxisRange(axisProjection)
+      !areProjectionAxisRangesOverlapping(
+        sourcePolygon.getProjectionAxisRange(projectionAxis),
+        comparePolygon.getProjectionAxisRange(projectionAxis)
       )
     ) {
       return false

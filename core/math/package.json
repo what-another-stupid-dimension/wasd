@@ -39,7 +39,7 @@
     "access": "public"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "tsc --diagnostics --listEmittedFiles",
     "build:watch": "tsc -w",
     "test": "jest .",
     "test:fix": "yarn run test --fix"

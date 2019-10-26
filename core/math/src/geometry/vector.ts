@@ -88,7 +88,7 @@ export default class Vector {
     return Math.sqrt((this.x - vector.x) ** 2 + (this.y - vector.y) ** 2)
   }
 
-  public axisProjection(target: Vector): Vector {
+  public projectionAxis(target: Vector): Vector {
     const projection: Vector = target.clone()
     const magnitude: number = target.magnitudeSq()
 

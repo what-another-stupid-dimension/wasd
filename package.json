@@ -18,11 +18,12 @@
     "url": "git+https://github.com/what-another-stupid-dimension/wasd.git"
   },
   "scripts": {
-    "bootstrap": "lerna bootstrap",
+    "bootstrap": "yarn run clean && yarn run build && lerna exec yarn install && lerna bootstrap",
     "build": "lerna run build --stream",
     "build:watch": "lerna run build:watch",
-    "clean": "yarn run clean:modules && yarn run clean:dist",
+    "clean": "yarn run clean:modules && yarn run clean:dist && yarn run clean:tsbuildinfo",
     "clean:dist": "del-cli core/*/lib",
+    "clean:tsbuildinfo": "del-cli core/*/tsconfig.tsbuildinfo",
     "clean:modules": "lerna clean --yes",
     "lint": "yarn run lint:file .",
     "lint:fix": "yarn run lint:file:fix .",
@@ -39,6 +40,8 @@
     "@types/node": "^12.11.1",
     "@typescript-eslint/eslint-plugin": "^2.5.0",
     "@typescript-eslint/parser": "^2.5.0",
+    "@wasd/math": "file:core/math",
+    "@wasd/physics": "file:core/physics",
     "del-cli": "^3.0.0",
     "eslint": "^6.5.1",
     "eslint-config-airbnb-base": "^14.0.0",

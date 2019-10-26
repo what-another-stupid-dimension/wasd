@@ -2,7 +2,7 @@
   "version": "0.0.1",
   "npmClient": "yarn",
   "useWorkspaces": false,
-  "packages": ["algorithm/*", "command/*", "core/*"],
+  "packages": ["algorithm/**", "command/**", "core/**"],
   "command": {
     "create": {
       "homepage": "https://github.com/what-another-stupid-dimension/wasd",
@@ -13,6 +13,9 @@
       "conventionalCommits": true,
       "exact": true,
       "message": "chore(release): %s"
+    },
+    "run": {
+      "npmClient": "yarn"
     }
   },
   "ignoreChanges": [

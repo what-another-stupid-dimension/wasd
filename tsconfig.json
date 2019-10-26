@@ -12,14 +12,20 @@
     "removeComments": true,
     "sourceMap": true,
     "strict": true,
-    "target": "es5"
+    "target": "es5",
+    "baseUrl": ".",
+    "paths": {
+      "@wasd/math": ["core/math/src"],
+      "@wasd/physics": ["core/physics/src"]
+    }
   },
-  "include": ["core"],
   "exclude": [
     "node_modules",
+    "**/node_modules",
     "**/*.test.ts",
+
     "**/*.spec.ts",
     "**/__tests__/*.ts",
-    "**/node_modules"
+    "**/*.js"
   ]
 }

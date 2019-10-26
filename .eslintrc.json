@@ -1,0 +1,66 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "env": {
+    "node": true,
+    "browser": true,
+    "jest": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "extends": [
+    "airbnb-base",
+    "plugin:prettier/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier/@typescript-eslint"
+  ],
+  "plugins": [
+    "@typescript-eslint",
+    "import",
+    "json",
+    "markdown",
+    "node",
+    "promise",
+    "prettier",
+    "eslint-comments",
+    "jest"
+  ],
+  "rules": {
+    "no-console": ["error"],
+    "import/no-extraneous-dependencies": ["error"],
+    "prettier/prettier": "error",
+    "no-unused-vars": "error",
+    "new-cap": ["error", { "properties": true }],
+    "@typescript-eslint/explicit-function-return-type": ["error"]
+  },
+  "overrides": [
+    {
+      "files": ["**/___tests___/*.ts"],
+      "env": {
+        "jest/globals": true
+      },
+      "rules": {
+        "jest/no-disabled-tests": "warn",
+        "jest/no-focused-tests": "error",
+        "jest/no-alias-methods": "error",
+        "jest/no-identical-title": "error",
+        "jest/no-jasmine-globals": "error",
+        "jest/no-jest-import": "error",
+        "jest/no-test-prefixes": "error",
+        "jest/no-test-callback": "error",
+        "jest/no-test-return-statement": "error",
+        "jest/prefer-to-have-length": "warn",
+        "jest/prefer-spy-on": "error",
+        "jest/valid-expect": "error"
+      }
+    }
+  ],
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".ts", ".json"]
+      }
+    }
+  }
+}

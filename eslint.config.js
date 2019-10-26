@@ -30,7 +30,8 @@ module.exports = {
     'no-console': ['error'],
     'import/no-extraneous-dependencies': ['error'],
     'prettier/prettier': 'error',
-    'no-unused-vars': 'error'
+    'no-unused-vars': 'error',
+    'new-cap': ['error', { properties: true }]
   },
   overrides: [
     {

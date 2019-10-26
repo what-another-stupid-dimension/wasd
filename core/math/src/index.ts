@@ -7,7 +7,18 @@ import {
   Vector,
   Point,
   Circle,
-  Rectangle
+  Rectangle,
+  Range
 } from './geometry'
 
-export { aabb, sat, ShapeType, Rectangle, Circle, Point, Vector, Polygon }
+export {
+  aabb,
+  sat,
+  ShapeType,
+  Rectangle,
+  Circle,
+  Point,
+  Vector,
+  Polygon,
+  Range
+}

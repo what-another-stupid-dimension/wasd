@@ -29,7 +29,8 @@ module.exports = {
   rules: {
     'no-console': ['error'],
     'import/no-extraneous-dependencies': ['error'],
-    'prettier/prettier': 'error'
+    'prettier/prettier': 'error',
+    'no-unused-vars': 'error'
   },
   overrides: [
     {

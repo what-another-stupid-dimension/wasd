@@ -5,16 +5,19 @@ module.exports = {
   },
   coveragePathIgnorePatterns: [
     '/node_modules/',
+    '/coverage/',
     '/__fixtures__/',
-    '/__tests__/',
-    '/lib/'
+    '/__tests__/'
+  ],
+  collectCoverageFrom: [
+    '**/*.{ts,js}',
+    '!**/node_modules/**',
+    '!**/lib/**',
+    '!**/*.config.js',
+    '!**/index.ts'
   ],
   testPathIgnorePatterns: ['__fixtures__', 'node_modules', 'lib'],
-  projects: [
-    // '<rootDir>/algorithm/*/jest.config.js',
-    // '<rootDir>/command/*/jest.config.js',
-    '<rootDir>/core/*/jest.config.js'
-  ],
+  projects: ['<rootDir>/core/*/jest.config.js'],
   globals: {
     NODE_ENV: 'test'
   },

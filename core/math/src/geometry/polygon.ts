@@ -1,10 +1,6 @@
 import Shape, { ShapeType } from './shape'
 import Vector from './vector'
-
-export interface ProjectionAxisRange {
-  min: number
-  max: number
-}
+import Range from './range'
 
 export default class Polygon implements Shape {
   type: ShapeType = ShapeType.Polygon
@@ -34,7 +30,7 @@ export default class Polygon implements Shape {
     return this
   }
 
-  getProjectionAxisRange(projectionAxis: Vector): ProjectionAxisRange {
+  getProjectionAxisRange(projectionAxis: Vector): Range {
     let min: number = Number.MAX_SAFE_INTEGER
     let max: number = Number.MIN_SAFE_INTEGER
 
@@ -44,6 +40,30 @@ export default class Polygon implements Shape {
       max = Math.max(max, range)
     })
 
-    return { min, max }
+    return new Range(min, max)
+  }
+
+  hasOverlapOnProjectionAxises(polygon: Polygon): boolean {
+    // We need to iterate over all points of the projectingPolygon to create all projecting axises
+    for (let i = 0; i < this.points.length; i += 1) {
+      // Create axis projection for the lint between current and next point
+      const projectionAxis = this.points[i].projectionAxis(
+        this.points[(i + 1) % this.points.length]
+      )
+
+      // Get the ranges on the projection Axises
+      const projectingPolygonRange = this.getProjectionAxisRange(projectionAxis)
+      const interferingPolygonRange = polygon.getProjectionAxisRange(
+        projectionAxis
+      )
+
+      // Now lets check if the polygons ranges on the projection axis are overlapping
+      if (!projectingPolygonRange.isOverlapping(interferingPolygonRange)) {
+        // As soon as the two polygons has no overlap on any projection axis they do not collide
+        return false
+      }
+    }
+
+    return true
   }
 }

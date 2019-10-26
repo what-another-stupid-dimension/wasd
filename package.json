@@ -27,7 +27,7 @@
     "clean:modules": "lerna clean --yes",
     "lint": "yarn run lint:file .",
     "lint:fix": "yarn run lint:file:fix .",
-    "lint:file": "eslint --ignore-path .gitignore --config eslint.config.js --ext .ts --ext .js --ext .md --ext .json",
+    "lint:file": "eslint --ignore-path .gitignore --ext .ts --ext .js --ext .md --ext .json",
     "lint:file:fix": "yarn run lint:file --fix",
     "publish": "yarn run clean && lerna bootstrap && yarn run build && lerna publish",
     "test": "jest .",

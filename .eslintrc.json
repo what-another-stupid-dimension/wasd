@@ -31,8 +31,9 @@
     "import/no-extraneous-dependencies": ["error"],
     "prettier/prettier": "error",
     "no-unused-vars": "error",
-    "new-cap": ["error", { "properties": true }],
-    "@typescript-eslint/explicit-function-return-type": ["error"]
+    "new-cap": ["error", { "properties": true, "capIsNewExceptionPattern": "^Riged."  }],
+    "@typescript-eslint/explicit-function-return-type": ["error"],
+    "no-param-reassign": ["error", { "props": false }]
   },
   "overrides": [
     {

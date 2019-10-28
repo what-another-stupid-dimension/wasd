@@ -29,7 +29,7 @@
     "lint:fix": "yarn run lint:file:fix .",
     "lint:file": "eslint --ignore-path .gitignore --ext .ts --ext .js --ext .md --ext .json",
     "lint:file:fix": "yarn run lint:file --fix",
-    "publish": "yarn run clean && lerna bootstrap && yarn run build && lerna publish",
+    "publish": "yarn run bootstrap && lerna publish",
     "test": "jest .",
     "test:watch": "yarn run test --watch"
   },

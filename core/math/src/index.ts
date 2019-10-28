@@ -2,6 +2,7 @@ import aabb from './aabb'
 import sat from './sat'
 
 import {
+  Shape,
   ShapeType,
   Polygon,
   Vector,
@@ -14,6 +15,7 @@ import {
 export {
   aabb,
   sat,
+  Shape,
   ShapeType,
   Rectangle,
   Circle,

@@ -1,4 +1,5 @@
-import { Polygon, Vector } from '../geometry'
+import { Polygon } from '../shapes'
+import Vector from '../vector'
 
 export default (
   position1: Vector,

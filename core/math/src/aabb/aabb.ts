@@ -1,4 +1,5 @@
-import { Vector, Rectangle } from '../geometry'
+import { Rectangle } from '../shapes'
+import Vector from '../vector'
 
 /**
  * Axis-Aligned Bounding Box

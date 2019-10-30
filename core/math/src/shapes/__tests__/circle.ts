@@ -1,5 +1,5 @@
 import Circle from '../circle'
-import { ShapeType } from '../shape'
+import Type from '../type'
 
 test('geometry > circle > getter', () => {
   const circle = new Circle(30)
@@ -14,7 +14,7 @@ test('geometry > circle > setter', () => {
 
 test('geometry > circle > type', () => {
   const circle = new Circle(0)
-  expect(circle.type).toBe(ShapeType.Circle)
+  expect(circle.type).toBe(Type.Circle)
 })
 
 test('geometry > circle > isCircle', () => {

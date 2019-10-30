@@ -1,26 +1,7 @@
 import aabb from './aabb'
 import sat from './sat'
+import * as shapes from './shapes'
+import Range from './range'
+import Vector from './vector'
 
-import {
-  Shape,
-  ShapeType,
-  Polygon,
-  Vector,
-  Point,
-  Circle,
-  Rectangle,
-  Range
-} from './geometry'
-
-export {
-  aabb,
-  sat,
-  Shape,
-  ShapeType,
-  Rectangle,
-  Circle,
-  Point,
-  Vector,
-  Polygon,
-  Range
-}
+export { aabb, sat, shapes, Vector, Range }

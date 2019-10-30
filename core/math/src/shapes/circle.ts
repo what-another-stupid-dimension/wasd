@@ -1,7 +1,8 @@
-import Shape, { ShapeType } from './shape'
+import Shape from './shape'
+import Type from './type'
 
 export default class Circle implements Shape {
-  type: ShapeType = ShapeType.Circle
+  type: Type = Type.Circle
 
   public radius: number
 

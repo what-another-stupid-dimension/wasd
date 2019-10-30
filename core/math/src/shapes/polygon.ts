@@ -1,9 +1,10 @@
-import Shape, { ShapeType } from './shape'
-import Vector from './vector'
-import Range from './range'
+import Shape from './shape'
+import Type from './type'
+import Vector from '../vector'
+import Range from '../range'
 
 export default class Polygon implements Shape {
-  type: ShapeType = ShapeType.Polygon
+  type: Type = Type.Polygon
 
   public points: Vector[]
 

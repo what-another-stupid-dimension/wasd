@@ -1,9 +1,9 @@
 import Point from '../point'
-import { ShapeType } from '../shape'
+import Type from '../type'
 
 test('geometry > point > type', () => {
   const point = new Point()
-  expect(point.type).toBe(ShapeType.Point)
+  expect(point.type).toBe(Type.Point)
 })
 
 test('geometry > circle > isPoint', () => {

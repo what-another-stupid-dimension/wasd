@@ -1,5 +1,6 @@
 import sat from '../sat'
-import { Polygon, Vector } from '../../geometry'
+import { Polygon } from '../../shapes'
+import Vector from '../../vector'
 
 test('sat > detects collision', () => {
   const position1 = new Vector(0, 0)

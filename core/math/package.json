@@ -42,6 +42,6 @@
     "build": "tsc",
     "build:watch": "tsc -w",
     "test": "jest .",
-    "test:fix": "yarn run test --fix"
+    "test:fix": "npm run test --fix"
   }
 }

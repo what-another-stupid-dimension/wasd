@@ -1,6 +1,6 @@
 import Polygon from '../polygon'
-import { ShapeType } from '../shape'
-import Vector from '../vector'
+import Type from '../type'
+import Vector from '../../vector'
 
 const verticesFixture: Vector[] = [
   new Vector(-10, -10),
@@ -24,7 +24,7 @@ test('geometry > polygon > setter', () => {
 
 test('geometry > polygon > type', () => {
   const polygon = new Polygon(verticesFixture)
-  expect(polygon.type).toBe(ShapeType.Polygon)
+  expect(polygon.type).toBe(Type.Polygon)
 })
 
 test('geometry > polygon > isPolygon', () => {

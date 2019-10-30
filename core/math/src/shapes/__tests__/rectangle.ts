@@ -1,5 +1,5 @@
 import Rectangle from '../rectangle'
-import { ShapeType } from '../shape'
+import Type from '../type'
 
 test('geometry > rectangle > getter', () => {
   const rectangle = new Rectangle(10, 20)
@@ -17,7 +17,7 @@ test('geometry > rectangle > setter', () => {
 
 test('geometry > rectangle > type', () => {
   const rectangle = new Rectangle(0, 0)
-  expect(rectangle.type).toBe(ShapeType.Rectangle)
+  expect(rectangle.type).toBe(Type.Rectangle)
 })
 
 test('geometry > rectangle > isRectangle', () => {

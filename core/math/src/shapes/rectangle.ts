@@ -1,7 +1,8 @@
-import Shape, { ShapeType } from './shape'
+import Shape from './shape'
+import Type from './type'
 
 export default class Rectangle implements Shape {
-  type: ShapeType = ShapeType.Rectangle
+  type: Type = Type.Rectangle
 
   public width: number
 

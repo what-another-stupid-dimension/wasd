@@ -1,5 +1,6 @@
 import aabb from '../aabb'
-import { Vector, Rectangle } from '../../geometry'
+import { Rectangle } from '../../shapes'
+import Vector from '../../vector'
 
 test('aabbb > to detect same position collisions', () => {
   const rectangle1 = new Rectangle(30, 30)

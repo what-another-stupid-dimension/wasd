@@ -29,7 +29,7 @@
     "test": "__tests__"
   },
   "dependencies": {
-    "@wasd/math": "file:../../core/math"
+    "@wasd/math": "0.0.1"
   },
   "files": [
     "lib"
@@ -43,7 +43,7 @@
   "scripts": {
     "build": "tsc",
     "build:watch": "tsc -w",
-    "test": "jest .",
-    "test:fix": "yarn run test --fix"
+    "test": "jest ",
+    "test:fix": "npm run test --fix"
   }
 }

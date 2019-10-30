@@ -25,23 +25,22 @@ Open Source Game and Physics Engine
 To start development on wasd you need:
 
 - node
-- yarn
 
 ### Tests
 
-We are using Jest for testing. Run `yarn run test` for tests.  
-This command is also available in every sub-package. `cd core/physics && yarn run test`
+We are using Jest for testing. Run `npm run test` for tests.  
+This command is also available in every sub-package. `cd core/physics && npm run test`
 
 ### Linting
 
 For linting we are using eslint + prettier.
 Make sure to setup your IDE to run with prettier.
-`yarn run lint`
+`npm run lint`
 
 Or with fix flag:
 
-`yarn run lint:fix`
+`npm run lint:fix`
 
 ### Build Packages
 
-To guaranty a fresh build run `yarn run clean` before you run the building `yarn run build` command.
+To guaranty a fresh build run `npm run clean` before you run the building `npm run build` command.

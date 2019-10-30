@@ -17,21 +17,25 @@
     "type": "git",
     "url": "git+https://github.com/what-another-stupid-dimension/wasd.git"
   },
+  "private": true,
+  "workspaces": [
+    "core/*"
+  ],
   "scripts": {
-    "bootstrap": "yarn run clean && yarn run build && lerna exec yarn install && lerna bootstrap",
+    "bootstrap": "lerna bootstrap --hoist",
     "build": "lerna run build --stream",
     "build:watch": "lerna run build:watch",
-    "clean": "yarn run clean:modules && yarn run clean:dist && yarn run clean:tsbuildinfo",
+    "clean": "npm run clean:modules && npm run clean:dist && npm run clean:tsbuildinfo",
     "clean:dist": "del-cli core/*/lib",
     "clean:tsbuildinfo": "del-cli core/*/tsconfig.tsbuildinfo",
     "clean:modules": "lerna clean --yes",
-    "lint": "yarn run lint:file .",
-    "lint:fix": "yarn run lint:file:fix .",
+    "lint": "npm run lint:file .",
+    "lint:fix": "npm run lint:file:fix .",
     "lint:file": "eslint --ignore-path .gitignore --ext .ts --ext .js --ext .md --ext .json",
-    "lint:file:fix": "yarn run lint:file --fix",
-    "publish": "yarn run bootstrap && lerna publish",
+    "lint:file:fix": "npm run lint:file --fix",
+    "publish": "npm run bootstrap && lerna publish",
     "test": "jest .",
-    "test:watch": "yarn run test --watch"
+    "test:watch": "npm run test --watch"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.2.0",
@@ -76,8 +80,12 @@
   },
   "lint-staged": {
     "*.{js,ts,json,css,md}": [
-      "yarn run lint:file:fix",
+      "npm run lint:file:fix",
       "git add"
     ]
+  },
+  "dependencies": {
+    "@wasd/math": "file:core\\math",
+    "@wasd/physics": "file:core\\physics"
   }
 }

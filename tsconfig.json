@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "module": "ES2022",
+    "composite": true,
+    "moduleResolution": "Bundler",
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "types": [ "node" ],
+    "target": "esnext",
+    "lib": [
+      "es6",
+      "es5"
+    ],
+    "paths": {
+      "@wasd/*": [ "./packages/*/src" ]
+    }
+  },
+}

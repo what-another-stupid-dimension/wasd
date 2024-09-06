@@ -1,0 +1,6 @@
+export { default as Box } from './Box'
+export { default as Capsule } from './Capsule'
+export { default as Plate } from './Sphere'
+export { default as Polygon } from './Polygon'
+export { default as Sphere } from './Sphere'
+export { Shape } from './types'

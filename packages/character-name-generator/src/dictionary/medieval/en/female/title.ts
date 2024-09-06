@@ -1,0 +1,28 @@
+import nonbinary from '../nonbinary/title'
+
+export default [
+    ...nonbinary,
+    'Maiden',
+    'Damsel',
+    'Mam',
+    'Baroness',
+    'Countess',
+    'Dame',
+    'Duchess',
+    'Empress',
+    'Lady',
+    'Queen',
+    'Sultana',
+    'Viscountess',
+    'Witch',
+    'Sorceress',
+    'Princess',
+    'High Priestess',
+    'Mistress',
+    'Matriarch',
+    'Seeress',
+    'Wardeness',
+    'Chieftess',
+    'Guardianess',
+    'Highborn',
+]

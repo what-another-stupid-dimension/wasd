@@ -1,0 +1,29 @@
+{
+  "name": "@wasd/di",
+  "description": "wasd Dependency Injection",
+  "version": "0.0.1",
+  "license": "SEE LICENSE IN ../../license.md",
+  "keywords": [
+    "DI",
+    "Dependency Injections",
+    "Dependency Injector",
+    "Container",
+    "Dependency Injection Container"
+  ],
+  "contributors": [
+    {
+      "name": "Alexander Mührenberg",
+      "email": "alexander@muehrenberg.de",
+      "url": "https://github.com/muehre"
+    }
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "dependencies": {
+    "reflect-metadata": "^0.2.2"
+  }
+}

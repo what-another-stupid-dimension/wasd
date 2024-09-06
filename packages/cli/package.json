@@ -1,0 +1,45 @@
+{
+  "name": "@wasd/cli",
+  "description": "Stylized Cli Tooling using Commander.js, Inquirer.js and chalk",
+  "version": "0.0.1",
+  "license": "SEE LICENSE IN ../../license.md",
+  "keywords": [
+    "typescript",
+    "commander",
+    "Commander.js",
+    "inquirer",
+    "Inquirer.js",
+    "chalk",
+    "figlet",
+    "cli",
+    "command line interface",
+    "readline",
+    "colors",
+    "console"
+  ],
+  "contributors": [
+    {
+      "name": "Alexander Mührenberg",
+      "email": "alexander@muehrenberg.de",
+      "url": "https://github.com/muehre"
+    }
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "dependencies": {
+    "chalk": "^4",
+    "cli-spinners": "^3.2.0",
+    "commander": "^12.1.0",
+    "figlet": "^1.8.0",
+    "inquirer": "^12.0.0"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^9.0.3",
+    "@jest/globals": "^29.7.0",
+    "@types/cli-spinner": "^0.2.3"
+  }
+}

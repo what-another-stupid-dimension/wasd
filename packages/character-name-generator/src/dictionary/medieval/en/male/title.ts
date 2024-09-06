@@ -1,0 +1,26 @@
+import nonbinary from '../nonbinary/title'
+
+export default [
+    ...nonbinary,
+    'Sir',
+    'Baron',
+    'Count',
+    'Duke',
+    'Emperor',
+    'Lord',
+    'King',
+    'Prince',
+    'Sultan',
+    'Viscount',
+    'Wizard',
+    'Sorcerer',
+    'Knight',
+    'High Priest',
+    'Master',
+    'Patriarch',
+    'Seer',
+    'Warden',
+    'Chieftain',
+    'Guardian',
+    'Highborn',
+]

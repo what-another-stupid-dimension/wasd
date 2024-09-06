@@ -1,0 +1,28 @@
+{
+  "name": "@wasd/wasd",
+  "description": "wasd server framework",
+  "version": "0.0.1",
+  "license": "SEE LICENSE IN ../../license.md",
+  "keywords": [
+
+  ],
+  "contributors": [
+    {
+      "name": "Alexander Mührenberg",
+      "email": "alexander@muehrenberg.de",
+      "url": "https://github.com/muehre"
+    }
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "dependencies": {
+    "@wasd/cli": "workspace:^",
+    "@wasd/di": "workspace:^",
+    "@wasd/modules": "workspace:^",
+    "@wasd/server": "workspace:^"
+  }
+}

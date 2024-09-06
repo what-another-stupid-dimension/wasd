@@ -1,0 +1,55 @@
+{
+  "version": "0.0.2",
+  "private": true,
+  "license": "MIT",
+  "workspaces": [
+    "packages/*",
+    "examples/*"
+  ],
+  "packageManager": "pnpm@9.13.1",
+  "engines": {
+    "node": ">=20.17.0"
+  },
+  "scripts": {
+    "clean": "tsx scripts/clean.ts",
+    "build": "tsx scripts/build.ts",
+    "watch": "tsx scripts/watch.ts",
+    "lint": "pnpm run lint:code && pnpm run lint:dependencies",
+    "lint:code": "eslint --flag unstable_ts_config",
+    "lint:code:fix": "eslint --flag unstable_ts_config --fix --config ./etc/eslint.config.ts",
+    "lint:dependencies": "depcheck --ignores @wasd/*,ts-node",
+    "test": "pnpm test:unit",
+    "test:unit": "node --experimental-vm-modules node_modules/jest/bin/jest.js --config jest.config.ts",
+    "test:unit:coverage": "pnpm run test:unit --coverage",
+    "test:unit:watch": "pnpm run test:unit --watch",
+    "prerelease": "pnpm run test && pnpm run lint && pnpm run build"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.25.7",
+    "@eslint/compat": "^1.1.1",
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^15.3.0",
+    "@rollup/plugin-typescript": "^12.1.0",
+    "@types/eslint": "^9.6.1",
+    "@types/jest": "^29.5.13",
+    "@types/node": "^22.5.5",
+    "@wasd/cli": "workspace:*",
+    "@wasd/eslint-config": "workspace:*",
+    "babel-jest": "^29.7.0",
+    "depcheck": "^1.4.7",
+    "eslint": "^9.0.0",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.14",
+    "globals": "^15.11.0",
+    "jest": "^29.7.0",
+    "jiti": "^2.3.3",
+    "rimraf": "^6.0.1",
+    "rollup": "^4.24.0",
+    "ts-jest": "^29.2.5",
+    "ts-node": "^10.9.2",
+    "tslib": "^2.7.0",
+    "tsx": "^4.19.0",
+    "type-fest": "^4.26.1",
+    "typescript": "~5.5"
+  }
+}

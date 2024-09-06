@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "esModuleInterop": false,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "types": [ "node" ],
+    "lib": [
+      "es6",
+      "es5"
+    ],
+    "paths": {
+      "@shared/*": ["../shared/src/*"]
+    },
+  },
+  "exclude": [
+    "./node_modules"
+  ],
+  "include": [
+    "./src",
+  ],
+}

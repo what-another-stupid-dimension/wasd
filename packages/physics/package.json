@@ -1,0 +1,68 @@
+{
+  "name": "@wasd/physics",
+  "description": "2D & 3D physics engine with collision detection, space partitioning, and geometry utilities",
+  "version": "0.0.1",
+  "license": "SEE LICENSE IN ../../license.md",
+  "keywords": [
+    "physics",
+    "physics engine",
+    "geometry utils",
+    "octree",
+    "force",
+    "torque",
+    "velocity",
+    "space partitioning",
+    "3d physics",
+    "3d physics engine",
+    "vector3",
+    "vector2",
+    "rigidbody",
+    "collision",
+    "collision detection",
+    "collider",
+    "collision resolution",
+    "impulse resolution",
+    "impulse",
+    "rigidbody dynamics",
+    "angular velocity",
+    "mass",
+    "inertia",
+    "restitution",
+    "friction",
+    "gravity",
+    "3d shapes",
+    "box",
+    "sphere",
+    "plane",
+    "capsule",
+    "capsule3d",
+    "polygon",
+    "polygon3d",
+    "mesh",
+    "octree 3d",
+    "3d geometry utils",
+    "2d physics",
+    "2d physics engine",
+    "capsule2d",
+    "polygon2d",
+    "rectangle",
+    "plate",
+    "circle"
+  ],
+  "contributors": [
+    {
+      "name": "Alexander Mührenberg",
+      "email": "alexander@muehrenberg.de",
+      "url": "https://github.com/muehre"
+    }
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "devDependencies": {
+    "@jest/globals": "^29.7.0"
+  }
+}

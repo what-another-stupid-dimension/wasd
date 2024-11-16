@@ -9,9 +9,8 @@ const Box = (props: ThreeElements['mesh']) => {
         const radius = 0.25
         const speed = 0.5
 
-        meshRef.current.rotation.y += delta * speed
-        meshRef.current.rotation.x += delta * speed
-        meshRef.current.rotation.z += delta * speed
+        meshRef.current.rotation.x += delta * speed * 1
+        meshRef.current.rotation.z += delta * speed * 0.33333333
 
         meshRef.current.position.x = Math.cos(state.clock.elapsedTime * speed * 2)
         * radius

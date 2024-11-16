@@ -19,6 +19,7 @@ gameServer.setValue(NetworkModuleProperties, {
     transports: [
         { transport: WebSocketTransport, port: 8080 },
     ],
+    proxies: [],
 })
 gameServer.addModule(NetworkModule)
 gameServer.addModule(NetworkEventModule)

@@ -5,11 +5,11 @@ import WebSocketClient from './WebSocketClient'
 class WebSocketTransport implements Transport {
     private server: SocketIOServer
 
-    private clients = new Map<string, WebSocketClient<WebSocketTransport>>()
+    private clients = new Map<string, WebSocketClient>()
 
     constructor(
         private port: number,
-        private callbacks: TransportCallbacks<WebSocketTransport>,
+        private callbacks: TransportCallbacks,
     ) {
         this.server = new SocketIOServer({
             cors: {
@@ -19,7 +19,7 @@ class WebSocketTransport implements Transport {
         })
 
         this.server.on('connection', (socket: Socket) => {
-            const client = new WebSocketClient(socket, this)
+            const client = new WebSocketClient(socket)
 
             this.clients.set(client.getIdentifier(), client)
             this.callbacks.onClientConnected(client)
@@ -53,7 +53,7 @@ class WebSocketTransport implements Transport {
         })
     }
 
-    private handleSocketError(err: Error, client: WebSocketClient<WebSocketTransport>): void {
+    private handleSocketError(err: Error, client: WebSocketClient): void {
         if (err.message.includes('disconnect')) {
             // Handle disconnect-specific errors
             this.callbacks.onClientDisconnected(client)

@@ -1,4 +1,4 @@
-import NetworkClient from './NetworkClient'
+import NetworkClient from '../client/NetworkClient'
 
 export interface Transport {
     open(): void
@@ -6,19 +6,19 @@ export interface Transport {
     close(): void
 }
 
-export interface TransportCallbacks<T extends Transport> {
+export interface TransportCallbacks {
     onOpen: (name: string, port: number) => void,
     onClose: (name: string, port: number) => void,
     onError: (error: Error) => void,
-    onClientMessage: (client: NetworkClient<T>, message: string) => void,
-    onClientConnected: (client: NetworkClient<T>,) => void,
-    onClientDisconnected: (client: NetworkClient<T>) => void,
+    onClientMessage: (client: NetworkClient, message: string) => void,
+    onClientConnected: (client: NetworkClient,) => void,
+    onClientDisconnected: (client: NetworkClient) => void,
     onClientError: (message: string) => void,
 }
 
 export type TransportConstructor<T extends Transport> = {
     new (
         port: number,
-        callbacks: TransportCallbacks<T>,
+        callbacks: TransportCallbacks,
     ): T;
 };

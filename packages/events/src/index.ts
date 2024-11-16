@@ -17,4 +17,6 @@ export {
 export {
     Event,
     EventBus,
+    EventConstructor,
+    EventHandler,
 } from './types'

@@ -80,6 +80,9 @@ const examplesReactConfig: Linter.Config = {
         'react-refresh': pluginReactRefresh,
         'react-hooks': pluginReactHooks,
     },
+    rules: {
+        'import-x/no-unresolved': 'off',
+    },
     ignores: globalIgnores,
 }
 

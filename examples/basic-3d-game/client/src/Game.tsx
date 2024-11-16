@@ -1,13 +1,14 @@
 import { useEffect } from 'react'
 import { useThree } from '@react-three/fiber'
+import { TestEvent } from '@shared/events'
 import { Plane } from '@react-three/drei'
 import Box from './shapes/Box'
 import { useNetworkEvent } from './network'
-import { TestEvent } from '../../shared/src'
 
 const Game = () => {
     const { camera, gl } = useThree()
-    useNetworkEvent(TestEvent, () => {})
+
+    const send = useNetworkEvent(TestEvent)
 
     useEffect(() => {
         gl.shadowMap.enabled = true
@@ -15,6 +16,10 @@ const Game = () => {
         camera.position.set(0, -10, 20)
         camera.lookAt(0, 0, 0)
     }, [camera, gl])
+
+    useEffect(() => {
+        send(new TestEvent('world'))
+    }, [send])
 
     return (
     <>

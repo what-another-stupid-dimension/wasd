@@ -1,18 +1,3 @@
 {
   "extends": "./tsconfig.json",
-  "exclude": [
-     "node_modules",
-  ],
-  "include": [
-    "./globals.d.ts",
-    "./eslint.config.ts",
-    "./packages/*/src/**/*.ts",
-    "packages/*/tests/**/*.spec.ts",
-    "packages/*/tests/**/*.test.ts",
-    "examples/*/**/*.ts",
-    "examples/*/**/*.tsx",
-    "*.config.ts",
-    "scripts/**/*.ts",
-    "examples/*/**/*.config.ts",
-  ]
 }

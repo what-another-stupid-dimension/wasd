@@ -1,7 +1,6 @@
-import NetworkClient from '../NetworkClient'
-import { Transport } from '../types'
+import NetworkClient from '../../client/NetworkClient'
 
-class UDPClient<T extends Transport> extends NetworkClient<T> {
+class UDPClient extends NetworkClient {
 }
 
 export default UDPClient

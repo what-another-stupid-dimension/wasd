@@ -1,5 +1,5 @@
-import female from '../../all/female/adjective'
+import all from '../../all/nonbinary/adjective'
 
 export default [
-    ...female,
+    ...all,
 ]

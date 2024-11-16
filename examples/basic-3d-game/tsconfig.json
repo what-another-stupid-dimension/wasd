@@ -1,12 +1,11 @@
 {
-  "files": [],
   "compilerOptions": {
-    
     "experimentalDecorators": true,
+    "esModuleInterop": true,
   },
   "references": [
     { "client": "./client/tsconfig.json" },
     { "server": "./server/tsconfig.json" },
-    { "shared": "./shared/tsconfig.json" }
-  ]
+    { "shared": "./shared/tsconfig.json" },
+  ],
 }

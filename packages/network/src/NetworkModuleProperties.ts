@@ -1,3 +1,4 @@
+import { Proxy } from './proxy/types'
 import { Transport, TransportConstructor } from './transport'
 
 export default class NetworkModuleProperties {
@@ -6,6 +7,7 @@ export default class NetworkModuleProperties {
             transport: TransportConstructor<Transport>,
             port: number,
         })[],
+        public readonly proxies: Proxy[] = [],
     ) {
     }
 }

@@ -1,17 +1,14 @@
-import { useEffect } from 'react'
-import { SharedNetworkEvent } from '../../../shared/src'
+import { NetworkEvent, NetworkEventConstructor } from '@wasd/network'
+import { useContext } from 'react'
+import NetworkContext from './NetworkContext'
 
-type SharedEventConstructor<T extends SharedNetworkEvent> = {
-    new (...args: any[]): T
-    eventName: string
-}
-const useNetworkEvent = <T extends SharedNetworkEvent>(
-    eventConstructor: SharedEventConstructor<T>,
-    handler: (event: T) => void,
-) => {
-    useEffect(() => {
-        console.log(eventConstructor.eventName, handler)
-    }, [])
+const useNetworkEvent = <T extends NetworkEvent>(
+    eventConstructor: NetworkEventConstructor<T>,
+): ((event: T) => void) => {
+    const { sendNetworkEvent } = useContext(NetworkContext)
+    return (event: T) => {
+        sendNetworkEvent(eventConstructor.eventName, event.serialize())
+    }
 }
 
 export default useNetworkEvent

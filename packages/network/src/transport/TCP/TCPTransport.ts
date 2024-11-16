@@ -6,11 +6,11 @@ import { TCPSocketErrorCode } from './types'
 class TCPTransport implements Transport {
     private server: net.Server
 
-    private clients = new Map<string, TCPClient<TCPTransport>>()
+    private clients = new Map<string, TCPClient>()
 
     constructor(
         private port: number,
-        private callbacks: TransportCallbacks<TCPTransport>,
+        private callbacks: TransportCallbacks,
     ) {
         this.server = net.createServer((socket) => {
             if (!socket.remoteAddress) {
@@ -27,7 +27,6 @@ class TCPTransport implements Transport {
                 socket,
                 socket.remoteAddress,
                 socket.remotePort,
-                this,
             )
             this.clients.set(client.getIdentifier(), client)
             this.callbacks.onClientConnected(client)

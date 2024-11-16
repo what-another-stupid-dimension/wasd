@@ -1,14 +1,14 @@
 import './App.css'
 import { Canvas } from '@react-three/fiber'
 import Game from './Game'
-import { useNetwork } from './network'
+import { NetworkProvider } from './network'
 
 function App() {
-    useNetwork({ url: 'http://localhost:8080' })
-
     return (
     <Canvas>
-       <Game />
+        <NetworkProvider url="http://localhost:8080">
+             <Game />
+       </NetworkProvider>
     </Canvas>
     )
 }

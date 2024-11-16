@@ -3,14 +3,18 @@ export { default as NetworkModuleProperties } from './NetworkModuleProperties'
 
 export {
     NetworkEvent,
+    NetworkEventConstructor,
     ClientConnectedNetworkEvent,
     ClientDisconnectedNetworkEvent,
-} from './events'
+} from './event'
+
+export {
+    NetworkClient,
+} from './client'
 
 export {
     TCPTransport,
     UDPTransport,
     WebSocketTransport,
-    NetworkClient,
     Transport,
 } from './transport'

@@ -21,6 +21,8 @@ export default (
     ],
     plugins: [
         resolve({
+            browser: true,
+            preferBuiltins: false,
             jail: packageConfig.path,
             modulePaths: [
                 path.join(packageConfig.path, 'node_modules'),

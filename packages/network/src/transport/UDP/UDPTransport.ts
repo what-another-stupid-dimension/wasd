@@ -5,11 +5,11 @@ import UDPClient from './UDPClient'
 class UDPTransport implements Transport {
     private server: dgram.Socket
 
-    private clients = new Map<string, UDPClient<UDPTransport>>()
+    private clients = new Map<string, UDPClient>()
 
     constructor(
         private port: number,
-        private callbacks: TransportCallbacks<UDPTransport>,
+        private callbacks: TransportCallbacks,
     ) {
         this.port = port
 
@@ -23,7 +23,7 @@ class UDPTransport implements Transport {
             const clientId = `${rinfo.address}:${rinfo.port}`
             let client = this.clients.get(clientId)
             if (!client) {
-                client = new UDPClient(rinfo.address, rinfo.port, this)
+                client = new UDPClient(rinfo.address, rinfo.port)
 
                 this.clients.set(client.getIdentifier(), client)
                 this.callbacks.onClientConnected(client)

@@ -4,9 +4,7 @@ import {
     Module,
     ModuleDecorator,
 } from '@wasd/wasd'
-import { EventModule, On } from '@wasd/events'
-import { ClientConnectedNetworkEvent } from '@wasd/network'
-import { SharedNetworkEvent, TestEvent } from '@shared/networkEvents'
+import { EventModule } from '@wasd/events'
 
 @ModuleDecorator()
 export default class NetworkEventModule implements Module {
@@ -19,16 +17,7 @@ export default class NetworkEventModule implements Module {
         this.cli = cli.createChildWithLabel('NetworkEvent')
     }
 
-    sendEvent(event: SharedNetworkEvent): void {
-        this.events.emit(event)
-    }
-
     onStart(): Promise<void> | void {
         this.cli.logInfo('NetworkEvent module started')
-    }
-
-    @On(ClientConnectedNetworkEvent)
-    onClientConnect(event: ClientConnectedNetworkEvent): void {
-        event.client.send(new TestEvent())
     }
 }

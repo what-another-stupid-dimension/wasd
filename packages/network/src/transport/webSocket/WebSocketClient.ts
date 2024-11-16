@@ -1,12 +1,12 @@
 import { Socket } from 'socket.io'
-import NetworkClient from '../NetworkClient'
+import NetworkClient from '../../client/NetworkClient'
 
-class WebSocketClient<T> extends NetworkClient<T> {
+class WebSocketClient extends NetworkClient {
     public readonly socket: Socket
 
-    constructor(socket: Socket, transport: T) {
+    constructor(socket: Socket) {
         // Using socket.id as the address and assigning a default port since WebSocket does not have an explicit port per client.
-        super(socket.handshake.address || 'unknown', socket.handshake.address ? 80 : 0, transport)
+        super(socket.handshake.address || 'unknown', socket.handshake.address ? 80 : 0)
         this.socket = socket
     }
 

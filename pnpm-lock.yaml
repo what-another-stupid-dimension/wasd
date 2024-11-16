@@ -95,6 +95,18 @@ importers:
       '@react-three/fiber':
         specifier: ^8.17.10
         version: 8.17.10(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(three@0.170.0)
+      '@wasd/character-name-generator':
+        specifier: workspace:^
+        version: link:../../packages/character-name-generator
+      '@wasd/events':
+        specifier: workspace:^
+        version: link:../../packages/events
+      '@wasd/network':
+        specifier: workspace:^
+        version: link:../../packages/network
+      '@wasd/wasd':
+        specifier: workspace:^
+        version: link:../../packages/wasd
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -120,18 +132,6 @@ importers:
       '@vitejs/plugin-react-swc':
         specifier: ^3.5.0
         version: 3.7.1(vite@5.4.11(@types/node@22.9.0))
-      '@wasd/character-name-generator':
-        specifier: workspace:^
-        version: link:../../packages/character-name-generator
-      '@wasd/events':
-        specifier: workspace:^
-        version: link:../../packages/events
-      '@wasd/network':
-        specifier: workspace:^
-        version: link:../../packages/network
-      '@wasd/wasd':
-        specifier: workspace:^
-        version: link:../../packages/wasd
       reflect-metadata:
         specifier: ^0.2.2
         version: 0.2.2

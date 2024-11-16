@@ -5,7 +5,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "client:dev": "vite --config ./client/vite.config.ts",
+    "client:dev": "vite --config ./vite.config.ts",
     "client:build": "tsc -b && vite --config ./client/vite.config.ts build",
     "client:preview": "vite --config preview",
     "server:dev": "tsx --tsconfig ./server/tsconfig.json --watch ./server/src/main.ts"

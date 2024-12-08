@@ -16,6 +16,7 @@
     "@wasd/character-name-generator": "workspace:^",
     "@wasd/events": "workspace:^",
     "@wasd/network": "workspace:^",
+    "@wasd/physics": "workspace:^",
     "@wasd/wasd": "workspace:^",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

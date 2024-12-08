@@ -26,6 +26,14 @@ class Capsule {
         )
         return new Box(min, max)
     }
+
+    serialize(): object {
+        return {
+            position: this.position.toArray(),
+            radius: this.radius,
+            height: this.height,
+        }
+    }
 }
 
 export default Capsule

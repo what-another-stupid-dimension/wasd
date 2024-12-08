@@ -38,6 +38,13 @@ class Polygon {
         }
         return new Box(min, max)
     }
+
+    serialize(): object {
+        return {
+            position: this.position.toArray(),
+            vertices: this.vertices.map((vertice) => vertice.toArray()),
+        }
+    }
 }
 
 export default Polygon

@@ -17,6 +17,13 @@ class Sphere {
         )
         return new Box(min, max)
     }
+
+    serialize(): object {
+        return {
+            position: this.position.toArray(),
+            radius: this.radius,
+        }
+    }
 }
 
 export default Sphere

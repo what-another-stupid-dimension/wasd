@@ -10,9 +10,12 @@ class WebSocketClient extends NetworkClient {
         this.socket = socket
     }
 
-    // Additional helper method if needed
-    send(data: string): void {
-        this.socket.send(data)
+    sendMessage(message: string | ArrayBuffer): void {
+        this.socket.send(message)
+    }
+
+    emit(event: string, data: any): void {
+        this.socket.emit(event, JSON.stringify(data))
     }
 }
 

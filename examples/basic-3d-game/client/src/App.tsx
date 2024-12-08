@@ -1,15 +1,15 @@
-import './App.css'
 import { Canvas } from '@react-three/fiber'
+import './App.css'
 import Game from './Game'
 import { NetworkProvider } from './network'
 
 function App() {
     return (
-    <Canvas>
         <NetworkProvider url="http://localhost:8080">
-             <Game />
+            <Canvas>
+                <Game />
+            </Canvas>
        </NetworkProvider>
-    </Canvas>
     )
 }
 

@@ -7,6 +7,13 @@ class Material {
         this.friction = friction
         this.restitution = restitution
     }
+
+    serialize(): object {
+        return {
+            friction: this.friction,
+            restitution: this.restitution,
+        }
+    }
 }
 
 export default Material

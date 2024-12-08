@@ -2,6 +2,7 @@ import { Collider } from '../collision/collider'
 import { Vector3 } from '../geometry'
 
 export interface BodyProperties {
+    id?: string,
     position: Vector3
     mass: number
     velocity?: Vector3

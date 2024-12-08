@@ -53,6 +53,12 @@ class WebSocketTransport implements Transport {
         })
     }
 
+    broadcast(message: string): void {
+        this.clients.forEach((client) => {
+            client.sendMessage(message)
+        })
+    }
+
     private handleSocketError(err: Error, client: WebSocketClient): void {
         if (err.message.includes('disconnect')) {
             // Handle disconnect-specific errors

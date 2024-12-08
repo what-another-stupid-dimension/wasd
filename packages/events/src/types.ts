@@ -3,7 +3,7 @@ export interface Event {
 
 export type EventConstructor<T extends Event> = new (...args: any[]) => T
 
-export type EventHandler<T extends Event> = (event: T) => void
+export type EventHandler<T extends Event> = (event: T, ...args: any[]) => void
 
 export type PrioritizedEventHandler<T extends Event> = {
     handler: EventHandler<T>,
@@ -22,9 +22,5 @@ export interface EventBus {
         handler: (event: T) => void,
     ): void
 
-    emit<T extends Event>(event: T) :void
-
-    registerListener(instance: Object): void
-
-    unregisterListener(instance: Object): void
+    emit<T extends Event, Args extends any[] = []>(eventInstance: T, ...args: Args) :void
 }

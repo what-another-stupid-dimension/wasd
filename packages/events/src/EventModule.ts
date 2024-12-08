@@ -1,9 +1,15 @@
-import { Container, Inject, InjectOptional } from '@wasd/di'
+import { Inject, InjectOptional } from '@wasd/di'
 import { Cli, CliNamespace } from '@wasd/cli'
-import { Module, ModuleDecorator, ModulePriority } from '@wasd/modules'
+import {
+    Module,
+    ModuleDecorator,
+    ModuleManager,
+    ModulePriority,
+} from '@wasd/modules'
 import { EventBus, Event } from './types'
 import { LocalEventBus } from './eventBus'
 import EventModuleProperties from './EventModuleProperties'
+import { getEventHandlers, hasEventHandlers } from './decorator'
 
 @ModuleDecorator()
 export default class EventModule implements Module, EventBus {
@@ -14,7 +20,7 @@ export default class EventModule implements Module, EventBus {
     private cli: Cli
 
     constructor(
-        @Inject(Container) private container: Container,
+        @Inject(ModuleManager) private modules: ModuleManager,
         @InjectOptional(EventModuleProperties) { eventBus }: EventModuleProperties = {},
         @InjectOptional(Cli) cli: Cli = new Cli(),
     ) {
@@ -28,19 +34,19 @@ export default class EventModule implements Module, EventBus {
     }
 
     async onStart(): Promise<void> {
-        const sortedModules = await this.getSortedModules()
+        const sortedModules = await this.modules.getModulesByPriority()
         // Register Event Listeners
         sortedModules.forEach((module) => {
-            this.eventBus.registerListener(module)
+            this.registerListener(module)
         })
     }
 
     async onStop(): Promise<void> {
-        const sortedModules = await this.getSortedModules()
+        const sortedModules = await this.modules.getModulesByPriority()
 
         // Unregister Event Listeners
         sortedModules.forEach((module) => {
-            this.eventBus.unregisterListener(module)
+            this.unregisterListener(module)
         })
     }
 
@@ -59,22 +65,40 @@ export default class EventModule implements Module, EventBus {
         this.eventBus.unsubscribe(eventClass, handler)
     }
 
-    emit<T extends Event>(event: T): void {
-        this.eventBus.emit(event)
+    emit<T extends Event, Args extends any[] = []>(eventInstance: T, ...args: Args): void {
+        this.eventBus.emit(eventInstance, ...args)
     }
 
     registerListener(instance: Object): void {
-        this.eventBus.registerListener(instance)
+        if (!hasEventHandlers(instance)) {
+            return
+        }
+
+        const handlers = getEventHandlers(instance)
+        if (handlers) {
+            handlers.forEach(({
+                eventType,
+                handler,
+                priority,
+            }: { eventType: any; handler: (event: any) => void, priority: number }) => {
+                this.subscribe(eventType, handler.bind(instance), priority)
+            })
+        }
     }
 
     unregisterListener(instance: Object): void {
-        this.eventBus.unregisterListener(instance)
-    }
+        if (!hasEventHandlers(instance)) {
+            return
+        }
 
-    private async getSortedModules(): Promise<Module[]> {
-        const modules: Module[] = await this.container.getTaggedServices('module')
-        modules.sort((a, b) => (b.priority || ModulePriority.CUSTOM)
-                - (a.priority || ModulePriority.CUSTOM))
-        return modules
+        const handlers = getEventHandlers(instance)
+        if (handlers) {
+            handlers.forEach(({
+                eventType,
+                handler,
+            }: { eventType: any; handler: (event: any) => void }) => {
+                this.unsubscribe(eventType, handler.bind(instance))
+            })
+        }
     }
 }

@@ -18,6 +18,7 @@ export default class ModuleManager {
 
     constructor(container: Container) {
         this.container = container
+        this.container.registerService(ModuleManager, () => this)
     }
 
     addModule<T extends Module>(
@@ -58,7 +59,7 @@ export default class ModuleManager {
         }
     }
 
-    private async getModulesByPriority(): Promise<Module[]> {
+    async getModulesByPriority(): Promise<Module[]> {
         const modules: Module[] = await this.container.getTaggedServices('module')
         return modules.sort((a, b) => (b.priority || ModulePriority.CUSTOM)
             - (a.priority || ModulePriority.CUSTOM))

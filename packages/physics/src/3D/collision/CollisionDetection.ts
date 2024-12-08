@@ -8,7 +8,7 @@ import { GeometryUtil, Vector3 } from '../geometry'
 import AABB from './AABB'
 import { CollisionFunction, CollisionResult } from './types'
 import SAT from './SAT'
-import { RigidBody } from '../body'
+import { Body, RigidBody } from '../body'
 
 export default class CollisionDetection {
     private static collisionFunctions = new Map([
@@ -54,7 +54,15 @@ export default class CollisionDetection {
         ],
     ])
 
-    public static detectCollision(body1: RigidBody, body2: RigidBody): CollisionResult {
+    public static detectCollision(body1: Body, body2: Body): CollisionResult {
+        if (body1 instanceof RigidBody && body2 instanceof RigidBody) {
+            return CollisionDetection.detectRigidBodyCollision(body1, body2)
+        }
+
+        return null
+    }
+
+    public static detectRigidBodyCollision(body1: RigidBody, body2: RigidBody): CollisionResult {
         const shape1 = body1.collider.shape
         const shape2 = body2.collider.shape
         const shapePair = [shape1.constructor.name, shape2.constructor.name].sort()

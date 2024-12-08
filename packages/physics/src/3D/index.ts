@@ -8,8 +8,8 @@ export {
     AABB,
     Collider,
     ColliderMaterial,
-    CollsisionDetection,
-    CollsisionResolving,
+    CollisionDetection,
+    CollisionResolving,
     CollisionResult,
     CollisionDetails,
     SAT,
@@ -32,3 +32,11 @@ export {
     Sphere,
     Shape,
 } from './shape'
+
+export {
+    World,
+    WorldConstructor,
+} from './world'
+
+export { default as PhysicsModule } from './PhysicsModule'
+export { default as PhysicsModuleProperties } from './PhysicsModuleProperties'

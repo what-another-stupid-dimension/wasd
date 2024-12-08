@@ -13,7 +13,10 @@ import {
     Token,
     Value,
 } from '@wasd/di'
-import { Cli, CliNamespace } from '@wasd/cli'
+import {
+    Cli,
+    CliNamespace,
+} from '@wasd/cli'
 import ServerProperties from './ServerProperties'
 import { bindExitHandler } from './utils'
 

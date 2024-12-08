@@ -11,7 +11,8 @@
     "target": "esnext",
     "lib": [
       "es6",
-      "es5"
+      "es5",
+      "DOM"
     ],
     "paths": {
       "@wasd/*": [ "./packages/*/src" ]

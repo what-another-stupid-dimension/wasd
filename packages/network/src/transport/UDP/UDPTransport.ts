@@ -50,6 +50,12 @@ class UDPTransport implements Transport {
         this.server.close()
         this.callbacks.onClose(this.constructor.name, this.port)
     }
+
+    broadcast(message: string): void {
+        this.clients.forEach((client) => {
+            this.server.send(message, client.port, client.address)
+        })
+    }
 }
 
 export default UDPTransport

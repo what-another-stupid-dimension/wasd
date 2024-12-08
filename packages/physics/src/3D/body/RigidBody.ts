@@ -31,6 +31,13 @@ class RigidBody extends Body {
     getBoundingBox(): Box {
         return new Box(this.position, this.position)
     }
+
+    serialize(): object {
+        return {
+            ...super.serialize(),
+            collider: this.collider.serialize(),
+        }
+    }
 }
 
 export default RigidBody

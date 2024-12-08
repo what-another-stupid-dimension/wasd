@@ -1,4 +1,6 @@
 class Vector3 {
+    static epsilon = 1e-6
+
     constructor(public x: number = 0, public y: number = 0, public z: number = 0) {}
 
     add(v: Vector3): Vector3 {
@@ -18,6 +20,14 @@ class Vector3 {
             return this.normalize().multiply(max)
         }
         return this
+    }
+
+    clampSmallValues(): Vector3 {
+        return new Vector3(
+            Math.abs(this.x) < Vector3.epsilon ? 0 : this.x,
+            Math.abs(this.y) < Vector3.epsilon ? 0 : this.y,
+            Math.abs(this.z) < Vector3.epsilon ? 0 : this.z,
+        )
     }
 
     clone(): Vector3 {
@@ -85,6 +95,10 @@ class Vector3 {
 
     subtract(v: Vector3): Vector3 {
         return new Vector3(this.x - v.x, this.y - v.y, this.z - v.z)
+    }
+
+    toArray(): number[] {
+        return [this.x, this.y, this.z]
     }
 
     static distance(v1: Vector3, v2: Vector3): number {

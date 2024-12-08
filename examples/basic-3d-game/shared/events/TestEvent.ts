@@ -1,15 +1,12 @@
-import type { NetworkEvent } from '@wasd/network'
-
-class TestEvent implements NetworkEvent {
-    static eventName = 'hello'
+class TestEvent {
+    static name = 'hello'
 
     constructor(
         public message: string,
-    ) {
-    }
+    ) {}
 
     serialize() {
-        return JSON.stringify({ message: this.message })
+        return { message: this.message }
     }
 
     static deserialize(data: string): TestEvent {

@@ -6,10 +6,12 @@
     "esModuleInterop": false,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
+    "downlevelIteration": true,
     "types": [ "node" ],
     "lib": [
       "es6",
-      "es5"
+      "es5",
+      "DOM"
     ],
     "paths": {
       "@shared/*": ["../shared/*"]
@@ -19,6 +21,6 @@
     "./node_modules"
   ],
   "include": [
-    "./src",
+    "./src", "../../../packages/physics/src/3D/world/state", "../client/src/webRTC/getUserMedia.ts",
   ],
 }

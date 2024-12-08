@@ -68,6 +68,12 @@ class TCPTransport implements Transport {
         this.server.close()
         this.callbacks.onClose(this.constructor.name, this.port)
     }
+
+    broadcast(message: string): void {
+        this.clients.forEach((client) => {
+            client.sendMessage(message)
+        })
+    }
 }
 
 export default TCPTransport

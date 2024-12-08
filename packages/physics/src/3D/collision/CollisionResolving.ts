@@ -1,4 +1,4 @@
-import { RigidBody } from '../body'
+import { Body, RigidBody } from '../body'
 import { Vector3 } from '../geometry'
 import { CollisionDetails, CollisionResult } from './types'
 
@@ -6,6 +6,18 @@ export default class CollisionResolving {
     private static readonly CORRECTION_FACTOR = 0.8
 
     public static resolveCollision(
+        body1: Body,
+        body2: Body,
+        collision: CollisionResult,
+    ): void {
+        if (body1 instanceof RigidBody && body2 instanceof RigidBody) {
+            return CollisionResolving.resolveRigidBodyCollision(body1, body2, collision)
+        }
+
+        return undefined
+    }
+
+    public static resolveRigidBodyCollision(
         body1: RigidBody,
         body2: RigidBody,
         collision: CollisionResult,

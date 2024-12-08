@@ -7,7 +7,7 @@ export default class NetworkModuleProperties {
             transport: TransportConstructor<Transport>,
             port: number,
         })[],
-        public readonly proxies: Proxy[] = [],
+        public readonly proxies?: Proxy[],
     ) {
     }
 }

@@ -40,6 +40,13 @@ class Box {
             && point.z >= this.min.z && point.z <= this.max.z
         )
     }
+
+    serialize(): object {
+        return {
+            min: this.min.toArray(),
+            max: this.max.toArray(),
+        }
+    }
 }
 
 export default Box

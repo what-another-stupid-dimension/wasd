@@ -1,14 +1,15 @@
 import { useEffect } from 'react'
 import { useThree } from '@react-three/fiber'
-import { TestEvent } from '@shared/events'
-import { Plane } from '@react-three/drei'
-import Box from './shapes/Box'
-import { useNetworkEvent } from './network'
+import { EntityManager } from './entity'
+import { useControls } from './controls'
+import { useStateCamera } from './camera'
+import { useWebRTC } from './webRTC'
 
 const Game = () => {
     const { camera, gl } = useThree()
-
-    const send = useNetworkEvent(TestEvent)
+    useControls()
+    useStateCamera({ })
+    useWebRTC()
 
     useEffect(() => {
         gl.shadowMap.enabled = true
@@ -16,10 +17,6 @@ const Game = () => {
         camera.position.set(0, -10, 20)
         camera.lookAt(0, 0, 0)
     }, [camera, gl])
-
-    useEffect(() => {
-        send(new TestEvent('world'))
-    }, [send])
 
     return (
     <>
@@ -42,19 +39,7 @@ const Game = () => {
       {/* Low-intensity ambient light to enhance shadow contrast */}
       <ambientLight intensity={0.8} />
 
-      {/* Boxes that cast shadows */}
-      <Box position={[0, 0, 2]} castShadow />
-
-      {/* Plane that receives shadows with high contrast */}
-      <Plane args={[100, 100]} position={[0, 0, 0]} receiveShadow>
-        <meshStandardMaterial
-          color="#ffffff"
-          emissive={'#ffffff'}
-          emissiveIntensity={35}
-          roughness={1}
-          metalness={0.1}
-        />
-      </Plane>
+      <EntityManager />
     </>
     )
 }

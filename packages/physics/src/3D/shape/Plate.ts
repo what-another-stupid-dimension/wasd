@@ -29,6 +29,13 @@ class Plate {
             Math.max(this.max.z, point.z),
         )
     }
+
+    serialize(): object {
+        return {
+            min: this.min.toArray(),
+            max: this.max.toArray(),
+        }
+    }
 }
 
 export default Plate

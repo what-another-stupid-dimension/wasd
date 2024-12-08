@@ -7,7 +7,7 @@ const useNetworkEvent = <T extends NetworkEvent>(
 ): ((event: T) => void) => {
     const { sendNetworkEvent } = useContext(NetworkContext)
     return (event: T) => {
-        sendNetworkEvent(eventConstructor.eventName, event.serialize())
+        sendNetworkEvent(eventConstructor.name, event.serialize())
     }
 }
 

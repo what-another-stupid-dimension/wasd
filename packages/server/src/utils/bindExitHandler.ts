@@ -15,7 +15,7 @@ export default (
     })
 
     process.on('uncaughtException', (e) => {
-        error(`Uncaught Exception: ${e}`)
+        error(`Uncaught Exception: ${e} ${e.stack}`)
         callback()
             .then(() => {
                 process.exit(99)

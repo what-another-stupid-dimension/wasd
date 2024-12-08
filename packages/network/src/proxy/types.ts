@@ -1,6 +1,7 @@
-import { NetworkEvent } from '../event'
+import { NetworkClient } from '../client'
+import { NetworkEvent } from '../events'
 
 export interface Proxy {
-    apply<T extends NetworkEvent>(event: T): Promise<T | false>
+    apply(event: NetworkEvent, client: NetworkClient): Promise<NetworkEvent | false>
     accepts(event: NetworkEvent): boolean
 }

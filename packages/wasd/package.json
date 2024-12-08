@@ -22,7 +22,10 @@
   "dependencies": {
     "@wasd/cli": "workspace:^",
     "@wasd/di": "workspace:^",
+    "@wasd/events": "workspace:^",
     "@wasd/modules": "workspace:^",
+    "@wasd/network": "workspace:^",
+    "@wasd/physics": "workspace:^",
     "@wasd/server": "workspace:^"
   }
 }

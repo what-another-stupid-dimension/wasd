@@ -1,4 +1,3 @@
-import { getEventHandlers, hasEventHandlers } from '../../decorator'
 import {
     EventConstructor,
     EventHandler,
@@ -39,45 +38,12 @@ export default class LocalEventBus implements EventBus {
         }
     }
 
-    emit<T extends Event>(eventInstance: T) {
+    emit<T extends Event, Args extends any[] = []>(eventInstance: T, ...args: Args) {
         const eventType = eventInstance.constructor as EventConstructor<T>
         const handlers = this.handlers.get(eventType)
         if (handlers) {
             handlers.forEach(({ handler }) => {
-                handler(eventInstance)
-            })
-        }
-    }
-
-    registerListener(instance: Object) {
-        if (!hasEventHandlers(instance)) {
-            return
-        }
-
-        const handlers = getEventHandlers(instance)
-        if (handlers) {
-            handlers.forEach(({
-                eventType,
-                handler,
-                priority,
-            }: { eventType: any; handler: (event: any) => void, priority: number }) => {
-                this.subscribe(eventType, handler.bind(instance), priority)
-            })
-        }
-    }
-
-    unregisterListener(instance: Object) {
-        if (!hasEventHandlers(instance)) {
-            return
-        }
-
-        const handlers = getEventHandlers(instance)
-        if (handlers) {
-            handlers.forEach(({
-                eventType,
-                handler,
-            }: { eventType: any; handler: (event: any) => void }) => {
-                this.unsubscribe(eventType, handler.bind(instance))
+                (handler as (event: T, ...args: Args) => void)(eventInstance, ...args)
             })
         }
     }

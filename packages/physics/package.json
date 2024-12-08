@@ -62,7 +62,15 @@
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
+  "dependencies": {
+    "@wasd/cli": "workspace:^",
+    "@wasd/di": "workspace:^",
+    "@wasd/modules": "workspace:^",
+    "murmurhash3js": "^3.0.1",
+    "uuid": "11.0.3"
+  },
   "devDependencies": {
-    "@jest/globals": "^29.7.0"
+    "@jest/globals": "^29.7.0",
+    "@types/murmurhash3js": "^3.0.7"
   }
 }

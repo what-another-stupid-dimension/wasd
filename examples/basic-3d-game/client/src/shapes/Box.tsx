@@ -1,35 +1,41 @@
 import { ThreeElements, useFrame } from '@react-three/fiber'
 import { useRef, useState } from 'react'
-import { Mesh } from 'three'
+import { Mesh, Vector3 } from 'three'
 
-const Box = (props: ThreeElements['mesh']) => {
+const Entity = (props: ThreeElements['mesh'] & { serverPosition: [number, number, number] }) => {
     const meshRef = useRef<Mesh>(null!)
-    const [active, setActive] = useState(false)
-    useFrame((state, delta) => {
-        const radius = 0.25
-        const speed = 0.5
+    const [currentPosition, setCurrentPosition] = useState<[number, number, number]>([0, 0, 0])
+    const targetPositionRef = useRef(new Vector3(...props.serverPosition))
+    const currentPositionRef = useRef(new Vector3(...currentPosition))
 
-        meshRef.current.rotation.x += delta * speed * 1
-        meshRef.current.rotation.z += delta * speed * 0.33333333
+    // Update the target position whenever the server sends a new one
+    targetPositionRef.current.set(...props.serverPosition)
 
-        meshRef.current.position.x = Math.cos(state.clock.elapsedTime * speed * 2)
-        * radius
-        * (props.position as number[])[0]
-        meshRef.current.position.y = Math.sin(state.clock.elapsedTime * speed)
-        * radius
-        * (props.position as number[])[1]
+    useFrame((_, deltaTime) => {
+        // Get the current and target positions as Vector3
+        const { current } = currentPositionRef
+        const target = targetPositionRef.current
+
+        // Lerp between the current position and the target
+        const lerpFactor = Math.min(1, deltaTime * 10) // Adjust speed of interpolation
+        current.lerp(target, lerpFactor)
+
+        // Update position state and reference for rendering
+        setCurrentPosition([current.x, current.y, current.z])
+        currentPositionRef.current.copy(current)
     })
+
     return (
-      <mesh
-        {...props}
-        ref={meshRef}
-        scale={1}
-        onClick={() => setActive(!active)}
-      >
-        <boxGeometry args={[2, 2, 2]} />
-        <meshStandardMaterial color={'#1dd1bc'} />
-      </mesh>
+        <mesh
+            {...props}
+            ref={meshRef}
+            position={currentPosition}
+            scale={1}
+        >
+            <boxGeometry args={[2, 2, 2]} />
+            <meshStandardMaterial color={'#1dd1bc'} />
+        </mesh>
     )
 }
 
-export default Box
+export default Entity

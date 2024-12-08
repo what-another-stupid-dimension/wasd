@@ -4,6 +4,8 @@ export interface Transport {
     open(): void
 
     close(): void
+
+    broadcast(message: string): void
 }
 
 export interface TransportCallbacks {

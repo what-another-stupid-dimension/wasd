@@ -22,6 +22,7 @@
     "@wasd/di": "workspace:^",
     "@wasd/events": "workspace:^",
     "@wasd/modules": "workspace:^",
+    "reflect-metadata": "^0.2.2",
     "socket.io": "^4.8.1",
     "uuid": "11.0.3"
   },

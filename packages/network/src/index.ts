@@ -6,11 +6,16 @@ export {
     NetworkEventConstructor,
     ClientConnectedNetworkEvent,
     ClientDisconnectedNetworkEvent,
-} from './event'
+} from './events'
 
 export {
     NetworkClient,
 } from './client'
+
+export {
+    AuthenticationProxy,
+    Proxy,
+} from './proxy'
 
 export {
     TCPTransport,
@@ -18,3 +23,7 @@ export {
     WebSocketTransport,
     Transport,
 } from './transport'
+
+export {
+    OnClient,
+} from './decorator'

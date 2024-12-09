@@ -7,10 +7,10 @@ import {
 import { useNetwork } from '../network'
 
 const useStateCamera = ({
-    tiltAngle = { min: 35, max: 60 },
+    tiltAngle = { min: 35, max: 55 },
     deadZone = { width: 1, height: 1 },
-    minDistance = 12,
-    maxDistance = 40,
+    minDistance = 8,
+    maxDistance = 32,
 }: {
     tiltAngle?: { min: number; max: number };
     deadZone?: { width: number; height: number };
@@ -81,7 +81,7 @@ const useStateCamera = ({
         // Interpolate tilt angle based on distance
         const targetTiltAngle = tiltAngle.min
         + ((distance - minDistance) / (maxDistance - minDistance))
-        * (tiltAngle.max - tiltAngle.min) // From 40° to 60°
+        * (tiltAngle.max - tiltAngle.min)
         const targetTiltRadians = (targetTiltAngle * Math.PI) / 180
 
         // Smooth the tilt angle transition

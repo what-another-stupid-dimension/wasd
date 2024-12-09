@@ -1,20 +1,25 @@
 export default class WebRTCOfferEvent {
-    static name = 'webrtc:offer'
+    static readonly name = 'webrtc:offer'
 
     constructor(
-        public sdp: string,
-        public type: 'offer' | 'answer',
-        public entityId: string, // Associated entity ID
+        public readonly sdp: string,
+        public readonly type: 'offer',
+        public readonly senderId: string,
     ) {}
 
     serialize() {
-        return { sdp: this.sdp, type: this.type, entityId: this.entityId }
+        return { sdp: this.sdp, type: this.type, senderId: this.senderId }
     }
 
-    static deserialize(data: any) {
-        if (!data || typeof data.sdp !== 'string' || typeof data.type !== 'string' || typeof data.entityId !== 'string') {
+    static deserialize(data: unknown): WebRTCOfferEvent {
+        if (
+            !data
+            || typeof (data as any).sdp !== 'string'
+            || (data as any).type !== 'offer'
+            || typeof (data as any).senderId !== 'string'
+        ) {
             throw new Error('Invalid data for WebRTCOfferEvent')
         }
-        return new WebRTCOfferEvent(data.sdp, data.type as 'offer' | 'answer', data.entityId)
+        return new WebRTCOfferEvent((data as any).sdp, (data as any).type, (data as any).senderId)
     }
 }

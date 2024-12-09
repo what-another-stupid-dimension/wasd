@@ -1,19 +1,25 @@
 export default class WebRTCAnswerEvent {
-    static name = 'webrtc:answer'
+    static readonly name = 'webrtc:answer'
 
     constructor(
-        public answer: RTCSessionDescriptionInit,
-        public entityId: string, // Associated entity ID
+        public readonly sdp: string,
+        public readonly type: 'answer',
+        public readonly senderId: string,
     ) {}
 
     serialize() {
-        return { answer: this.answer, entityId: this.entityId }
+        return { sdp: this.sdp, type: this.type, senderId: this.senderId }
     }
 
-    static deserialize(data: any) {
-        if (!data || !data.answer || typeof data.answer !== 'object' || typeof data.entityId !== 'string') {
+    static deserialize(data: unknown): WebRTCAnswerEvent {
+        if (
+            !data
+            || typeof (data as any).sdp !== 'string'
+            || (data as any).type !== 'answer'
+            || typeof (data as any).senderId !== 'string'
+        ) {
             throw new Error('Invalid data for WebRTCAnswerEvent')
         }
-        return new WebRTCAnswerEvent(data.answer, data.entityId)
+        return new WebRTCAnswerEvent((data as any).sdp, (data as any).type, (data as any).senderId)
     }
 }

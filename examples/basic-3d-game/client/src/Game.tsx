@@ -9,7 +9,13 @@ const Game = () => {
     const { camera, gl } = useThree()
     useControls()
     useStateCamera({ })
-    useWebRTC()
+    const { initializeLocalStream } = useWebRTC()
+
+    useEffect(() => {
+        initializeLocalStream().catch((error) => {
+            console.error('Error during stream initialization:', error)
+        })
+    }, [initializeLocalStream])
 
     useEffect(() => {
         gl.shadowMap.enabled = true

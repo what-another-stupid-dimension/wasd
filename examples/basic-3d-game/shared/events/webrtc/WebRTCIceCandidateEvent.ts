@@ -1,19 +1,20 @@
 export default class WebRTCIceCandidateEvent {
-    static name = 'webrtc:iceCandidate'
+    static readonly name = 'webrtc:iceCandidate'
 
     constructor(
-        public candidate: RTCIceCandidateInit,
-        public entityId: string, // Associated entity ID
+        public readonly candidate: RTCIceCandidateInit,
+        public readonly senderId: string,
     ) {}
 
     serialize() {
-        return { candidate: this.candidate, entityId: this.entityId }
+        return { candidate: this.candidate, senderId: this.senderId }
     }
 
-    static deserialize(data: any) {
-        if (!data || typeof data.candidate !== 'object' || typeof data.entityId !== 'string') {
+    static deserialize(data: unknown): WebRTCIceCandidateEvent {
+        if (!data || typeof (data as any).candidate !== 'object' || typeof (data as any).senderId !== 'string') {
             throw new Error('Invalid data for WebRTCIceCandidateEvent')
         }
-        return new WebRTCIceCandidateEvent(data.candidate as RTCIceCandidateInit, data.entityId)
+        // eslint-disable-next-line max-len
+        return new WebRTCIceCandidateEvent((data as any).candidate as RTCIceCandidateInit, (data as any).senderId)
     }
 }
